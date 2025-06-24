@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box">
+
+    <!-- 탭 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/btn_change_mascot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="캐릭터 바꾸기"
+            android:fontFamily="@font/cafe24surround"
+            android:textColor="#000000"
+            android:background="@drawable/button_closet_left"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_change_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="배경 바꾸기"
+            android:fontFamily="@font/cafe24surround"
+            android:textColor="#000000"
+            android:background="@drawable/button_closet_right"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- 캐릭터 container -->
+    <GridLayout
+        android:id="@+id/closet_mascot_container_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:visibility="visible"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins">
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonHaero"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/haero" />
+            <ImageView
+                android:id="@+id/lockIconHaero"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonToro"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/toro" />
+            <ImageView
+                android:id="@+id/lockIconToro"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonTino"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/tino" />
+            <ImageView
+                android:id="@+id/lockIconTino"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+    </GridLayout>
+    <GridLayout
+        android:id="@+id/closet_mascot_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:visibility="visible"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins">
+
+        <ImageButton
+            android:id="@+id/imageButtonMascotUnknown2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/question_mark_icon" />
+
+        <ImageButton
+            android:id="@+id/imageButtonMascotUnknown3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/question_mark_icon" />
+
+        <ImageButton
+            android:id="@+id/imageButtonMascotUnknown4"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/question_mark_icon" />
+    </GridLayout>
+
+
+    <!-- 배경 container 1-->
+    <GridLayout
+        android:id="@+id/closet_background_container_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins">
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonBase"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/background_base" />
+            <ImageView
+                android:id="@+id/lockIconBase"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonOdio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/background_oido" />
+            <ImageView
+                android:id="@+id/lockIconOdio"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonPark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/background_park" />
+            <ImageView
+                android:id="@+id/lockIconPark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+    </GridLayout>
+
+    <!-- 배경 container 2-->
+    <GridLayout
+        android:id="@+id/closet_background_container_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:visibility="gone"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins">
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonWavepark"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/background_wavepark" />
+            <ImageView
+                android:id="@+id/lockIconWavepark"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout android:layout_width="100dp" android:layout_height="100dp">
+            <ImageButton
+                android:id="@+id/imageButtonTuk"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/background_tuk" />
+            <ImageView
+                android:id="@+id/lockIconTuk"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="top|end"
+                android:src="@drawable/icon_lock"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/imageButtonBackgroundUnknown2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/question_mark_icon" />
+    </GridLayout>
+</LinearLayout>

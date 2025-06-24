@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/text_calendar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cafe24surround"
+        android:layout_marginTop="15dp"
+        android:text="출석체크"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        android:gravity="center" />
+
+    <CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/button_attend"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="출석하기"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center" />
+
+</LinearLayout>

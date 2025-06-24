@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/button_tutorial"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="냠포 사용설명서"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center" />
+
+
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="로그아웃"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center" />
+
+</LinearLayout>

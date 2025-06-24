@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <!-- 툴바 -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCF1FF"
+        android:elevation="4dp"
+        android:fontFamily="@font/cafe24surround"
+        android:title="@string/signup"
+        android:titleTextColor="#503E3E"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 아이디 입력 -->
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:autofillHints="아이디 입력"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/ID"
+        android:fontFamily="@font/cafe24surround"
+        android:textSize="15dp"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonCheckId" />
+
+    <!-- 아이디 중복 확인 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCheckId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button2"
+        android:text="@string/checkID"
+        android:fontFamily="@font/cafe24surround"
+        app:layout_constraintTop_toTopOf="@id/editTextId"
+        app:layout_constraintBottom_toBottomOf="@id/editTextId"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 비밀번호 입력 -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="비밀번호 입력"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/PW"
+        android:fontFamily="@font/cafe24surround"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 비밀번호 확인 -->
+    <EditText
+        android:id="@+id/editTextPasswordConfirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:autofillHints="비밀번호 확인"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/checkPW"
+        android:fontFamily="@font/cafe24surround"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 비밀번호 경고문 -->
+    <TextView
+        android:id="@+id/textPasswordWarning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/PW_warning"
+        android:textColor="#D32F2F"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/editTextPasswordConfirm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <!-- 전화번호 입력 -->
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="전화번호 입력"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/phone_number"
+        android:fontFamily="@font/cafe24surround"
+        android:inputType="phone"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/textPasswordWarning"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonCheckPhone" />
+
+    <!-- 전화번호 중복 확인 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCheckPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_button2"
+        android:text="@string/check_phone"
+        android:fontFamily="@font/cafe24surround"
+        app:layout_constraintTop_toTopOf="@id/editTextPhone"
+        app:layout_constraintBottom_toBottomOf="@id/editTextPhone"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 닉네임 입력 -->
+    <EditText
+        android:id="@+id/editTextNickname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="닉네임 입력"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/nickname"
+        android:fontFamily="@font/cafe24surround"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextPhone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 추천인 코드 입력 -->
+    <EditText
+        android:id="@+id/editTextReferral"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:autofillHints="추천인 코드 입력"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/referral_code"
+        android:fontFamily="@font/cafe24surround"
+        android:padding="12dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextNickname"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 가입하기 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSignup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_button2"
+        android:text="@string/signup_button"
+        android:textColor="#503E3E"
+        android:textSize="16sp"
+        android:fontFamily="@font/cafe24surround"
+        app:layout_constraintTop_toBottomOf="@id/editTextReferral"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

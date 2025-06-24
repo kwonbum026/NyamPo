@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 클릭됐을 때 색상 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="#888888"/>
+            <solid android:color="#A0A0A0" />
+            <corners android:radius="30dp" />
+        </shape>
+    </item>
+    <!-- 기본 상태 -->
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="#888888"/>
+            <solid android:color="#EFEFEF" />
+            <corners android:radius="30dp" />
+        </shape>
+    </item>
+</selector>

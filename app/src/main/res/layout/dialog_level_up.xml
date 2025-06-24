@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_background"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- 메시지 박스 -->
+
+    <ImageView
+        android:layout_width="39dp"
+        android:layout_height="46dp"
+        android:src="@drawable/heart_icon"
+        app:tint="#F44336" />
+
+    <TextView
+        android:id="@+id/popup_message"
+        android:layout_width="wrap_content"
+        android:layout_height="111dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/message_box_background"
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:minHeight="100dp"
+        android:padding="16dp"
+        android:text="레벨업!\n선물로 먹이 3개 드릴게요♡"
+        android:textColor="#503E3E"
+        android:textSize="20sp" />
+
+    <!-- 닫기 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/popup_close_btn"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/cafe24surround"
+        android:minWidth="100dp"
+        android:minHeight="40dp"
+        android:text="먹이 획득"
+        android:textColor="#503E3E"
+        android:textSize="20dp" />
+</LinearLayout>

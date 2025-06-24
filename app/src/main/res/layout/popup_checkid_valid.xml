@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_background"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <!-- 메시지 박스 -->
+    <TextView
+        android:id="@+id/popup_message"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/message_box_background"
+
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="사용 가능한 아이디입니다"
+        android:textColor="#503E3E"
+        android:textSize="20sp" />
+
+    <!-- 버튼 가로 배치 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2">
+
+        <!-- 사용 버튼 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/popup_use_btn"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/round_button"
+            android:fontFamily="@font/cafe24surround"
+            android:text="사용"
+            android:textColor="#503E3E" />
+
+         />
+    </LinearLayout>
+</LinearLayout>

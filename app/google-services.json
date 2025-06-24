@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "823876139693",
+    "project_id": "nyampo-7d71d",
+    "storage_bucket": "nyampo-7d71d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823876139693:android:1a19a5c34653f52f646424",
+        "android_client_info": {
+          "package_name": "com.example.nyampo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPjRzbEOVMcJqgOB3ojlk-prQF8qyqgFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

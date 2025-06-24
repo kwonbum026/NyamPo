@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ProgressBar의 배경 -->
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="10dp"/>
+            <solid android:color="#EFEFEF"/>
+            <stroke android:width="2dp" android:color="#888888"/>
+        </shape>
+    </item>
+
+    <!-- 실제 진행되는 부분 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="10dp"/>
+                <solid android:color="#FF6666"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

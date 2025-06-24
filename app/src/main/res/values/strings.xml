@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">popup_example</string>
+    <string name="signup">회원가입</string>
+    <string name="ID">아이디(영어, 숫자 조합 5자 이상)</string>
+    <string name="checkID">중복 확인</string>
+    <string name="PW">비밀번호 (영문+숫자 8자 이상)</string>
+    <string name="checkPW">비밀번호 확인</string>
+    <string name="PW_warning">비밀번호는 영문+숫자 포함 8자 이상이어야 합니다.</string>
+    <string name="phone_number">전화번호</string>
+    <string name="check_phone">중복 확인</string>
+    <string name="nickname">닉네임(8자 이내)</string>
+    <string name="referral_code">추천인 아이디 (선택)</string>
+    <string name="signup_button">가입하기</string>
+    <string name="close_button">닫기</string>
+    <string name="existed_id">중복된 ID입니다</string>
+    <string name="heart_icon">Heart Icon</string>
+    <string name="choose_character">캐릭터 선택</string>
+    <string name="choose_hero">해로 선택</string>
+    <string name="choose_toro">토로 선택</string>
+    <string name="text_choose_character">캐릭터를 선택해주세요!</string>
+    <string name="user">사용자</string>
+    <string name="qr_scan">QR코드 스캔</string>
+</resources>

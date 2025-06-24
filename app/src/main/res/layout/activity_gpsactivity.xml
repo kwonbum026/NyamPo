@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GPSActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#DCF1FF"
+        android:elevation="4dp"
+        app:navigationIcon="@drawable/icon_arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 커스텀 타이틀 텍스트 -->
+        <TextView
+            android:id="@+id/custom_toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/cafe24surround"
+            android:text="거리 측정"
+            android:textColor="#503E3E"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/mes_box"
+        android:layout_width="337dp"
+        android:layout_height="63dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.088"
+        app:srcCompat="@drawable/message_box_background" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map_fragment"
+        android:name="com.naver.maps.map.MapFragment"
+        android:layout_width="411dp"
+        android:layout_height="506dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.871" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="288dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="72dp"
+        android:fontFamily="@font/cafe24surround"
+        android:hint="텍스트"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/mes_box"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/mes_box"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/imageBtn"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/rounded_button2"
+        android:fontFamily="@font/cafe24surround"
+        android:minWidth="100dp"
+        android:minHeight="40dp"
+        android:text="다른 랜드마크와의 거리 확인하기"
+        android:textColor="#503E3E"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv" />
+    <!--        tools:layout_editor_absoluteY="102dp" />-->
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageBtn"-->
+    <!--        android:layout_width="211dp"-->
+    <!--        android:layout_height="47dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.143"-->
+    <!--        app:srcCompat="@drawable/rounded_button" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv2"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="12dp"-->
+    <!--        android:fontFamily="@font/cafe24surround"-->
+    <!--        android:text="다른 랜드마크와의 거리 확인하기"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/imageBtn"-->
+    <!--        app:layout_constraintEnd_toEndOf="@+id/imageBtn"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/imageBtn"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/imageBtn" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

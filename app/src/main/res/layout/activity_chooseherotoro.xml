@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:ignore="ExtraText">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#DCF1FF"
+        android:elevation="4dp"
+        android:fontFamily="@font/cafe24surround"
+        android:title="@string/choose_character"
+        android:titleTextColor="#503E3E"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 왼쪽 이미지 (해로) -->
+    <ImageView
+        android:id="@+id/imageHero"
+        android:layout_width="169dp"
+        android:layout_height="269dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/hero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <!-- 해로 선택 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSelectHero"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="@string/choose_hero"
+        android:textColor="#503E3E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageHero"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="@+id/imageHero"
+        app:layout_constraintTop_toBottomOf="@+id/imageHero"
+        app:layout_constraintVertical_bias="0.23" />
+
+    <!-- 토로 선택 버튼 -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSelectToro"
+        android:layout_width="130dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/round_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="@string/choose_toro"
+        android:textColor="#503E3E"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageToro"
+        app:layout_constraintHorizontal_bias="0.304"
+        app:layout_constraintStart_toStartOf="@+id/imageToro"
+        app:layout_constraintTop_toBottomOf="@+id/imageToro"
+        app:layout_constraintVertical_bias="0.236" />
+
+    <!-- 텍스트 -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/cafe24surround"
+        android:text="@string/text_choose_character"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 오른쪽 이미지 (토로) -->
+    <ImageView
+        android:id="@+id/imageToro"
+        android:layout_width="161dp"
+        android:layout_height="268dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/toro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

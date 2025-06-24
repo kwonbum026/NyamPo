@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 공지 제목 입력 -->
+    <EditText
+        android:id="@+id/edit_notice_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="공지 제목"
+        android:inputType="textCapWords"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_background"/>
+
+    <!-- 공지 세부사항 입력 -->
+    <EditText
+        android:id="@+id/edit_notice_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="공지 세부사항"
+        android:inputType="textMultiLine"
+        android:padding="12dp"
+        android:minLines="3"
+        android:background="@drawable/edittext_background"/>
+
+    <!-- 등록 버튼 -->
+    <Button
+        android:id="@+id/btn_post_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="공지 등록"
+        android:layout_marginTop="12dp"/>
+
+    <!-- (기존) 관리자 정보 텍스트 -->
+    <TextView
+        android:id="@+id/text_admin_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="관리자 공지 및 사용자 통계"
+        android:textSize="18sp"
+        android:paddingTop="16dp"/>
+
+    <!-- (기존) 사용자 리스트 -->
+    <ListView
+        android:id="@+id/list_user_stats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="8dp"/>
+</LinearLayout>

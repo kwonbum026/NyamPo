@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/background_base"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.6"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/background_base" />
+
+    <ImageView
+        android:id="@+id/background_oido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_oido" />
+
+    <ImageView
+        android:id="@+id/background_park"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_park" />
+
+    <ImageView
+        android:id="@+id/background_wavepark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_wavepark" />
+
+    <ImageView
+        android:id="@+id/background_tuk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_tuk" />
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.011"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user_icon" />
+
+    <TextView
+        android:id="@+id/userText"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_box"
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:text="사용자"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/userImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/heartIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="5dp"
+        android:contentDescription="Heart Icon"
+        android:src="@drawable/heart_icon"
+        app:layout_constraintEnd_toStartOf="@+id/ProgressBar"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#F44336" />
+
+    <TextView
+        android:id="@+id/heartNumberText"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/heartIcon"
+        app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+        app:layout_constraintStart_toStartOf="@+id/heartIcon"
+        app:layout_constraintTop_toTopOf="@+id/heartIcon" />
+
+    <ProgressBar
+        android:id="@+id/ProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="72dp"
+        android:progressDrawable="@drawable/progressbar_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/leaf_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/leaf_icon" />
+
+    <!-- 원본 비율 -->
+    <!-- android:layout_width="187dp" -->
+    <!-- android:layout_height="261dp" -->
+
+    <TextView
+        android:id="@+id/leafNumberText"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="105dp"
+        android:background="@drawable/rounded_box"
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/leaf_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/money_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/money_icon" />
+
+    <TextView
+        android:id="@+id/moneyNumberText"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="105dp"
+        android:background="@drawable/rounded_box"
+        android:fontFamily="@font/cafe24surround"
+        android:gravity="center"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/money_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton_haero"
+        android:layout_width="227dp"
+        android:layout_height="301dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="해로"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812"
+        app:srcCompat="@drawable/haero" />
+    <ImageButton
+        android:id="@+id/imageButton_toro"
+        android:layout_width="227dp"
+        android:layout_height="301dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="토로"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812"
+        app:srcCompat="@drawable/toro" />
+
+    <ImageButton
+        android:id="@+id/imageButton_tino"
+        android:layout_width="227dp"
+        android:layout_height="301dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="티노"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.812"
+        app:srcCompat="@drawable/tino" />
+
+    <ImageButton
+        android:id="@+id/imageButton_setting"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="설정 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/setting_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton_mail"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="메일 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton_calendar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_setting"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/mail_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton_calendar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="달력 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_setting"
+        app:layout_constraintVertical_bias="0.118"
+        app:srcCompat="@drawable/calendar_icon" />
+
+    <ImageView
+        android:id="@+id/check_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton_calendar"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_calendar"
+        app:layout_constraintTop_toTopOf="@+id/imageButton_calendar"
+        app:srcCompat="@drawable/check_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton_walk"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="걷기 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_calendar"
+        app:layout_constraintVertical_bias="0.004"
+        app:srcCompat="@drawable/walk_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton_closet"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="옷장 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_calendar"
+        app:layout_constraintVertical_bias="0.162"
+        app:srcCompat="@drawable/closet_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton_qr"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="QR 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202"
+        app:srcCompat="@drawable/icon_qr_scan" />
+
+    <!-- money 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
+
+    <ImageButton
+        android:id="@+id/imageButton_ad"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="광고 아이콘"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_qr"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ad_icon" />
+
+    <FrameLayout
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- 시루 버튼 -->
+        <Button
+            android:id="@+id/button_money"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_leaf_money"
+            android:gravity="center"
+            android:text="시루"
+            android:textColor="#000000"
+            android:textSize="26sp"
+            android:fontFamily="@font/cafe24surround"
+            android:contentDescription="시루 버튼" />
+    </FrameLayout>
+
+    <!-- leaf 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
+    <ImageView
+        android:id="@+id/money_icon_bottom"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/money_icon" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.976">
+
+        <!-- 먹이주기 버튼 -->
+        <Button
+            android:id="@+id/button_feed"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@drawable/button_leaf_money"
+            android:gravity="center"
+            android:text="먹이주기"
+            android:textColor="#000000"
+            android:textSize="25sp"
+            android:fontFamily="@font/cafe24surround"
+            android:contentDescription="먹이주기 버튼" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/feed_icon_leaf"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/leaf_icon" />
+
+    <TextView
+        android:id="@+id/noticeTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="공지사항 없음"
+        android:textColor="#FF0000"
+        android:textSize="14sp"
+        android:padding="8dp"
+        android:background="#FFF1F1F1"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
