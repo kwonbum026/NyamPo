@@ -60,10 +60,8 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
         // FusedLocationSource 는 지자기, 가속도 센서를 활용해 최적의 위치 정보를 반환하는 구현체
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
 
-        // 허가를 받았다면 기기를 통해 맵 띄우고, 받지 않았다면 위치 정보 수집 허용 요청
-        if (hasPermission()){
-            initMapView()
-        } else {
+        // 허가를 받지 않았다면 위치 정보 수집 허용 요청(콜백)
+        if (!hasPermission()) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE)
         }
     }
@@ -71,12 +69,16 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
     // 맵을 띄우기 위한 준비 함수
 
     override fun onMapReady(naverMap: NaverMap) {
-        var resent_result = "한국공학대학교"
+        var resent_result = "한국공학대학교" // 변수 값 초기화
+        var check_TUK = false
+        var check_lighthouse = false
+        var check_WP = false
+        var check_eco_park = false
+
         this.naverMap = naverMap
         naverMap.locationSource = locationSource
         naverMap.uiSettings.isLocationButtonEnabled = true // 현재 위치를 아이콘으로 표시할 지 여부
 
-        //추가
         // 허가 여부에 따라 현재 위치를 나타내는 점 상태 변경
         if (hasPermission()) {
             naverMap.locationTrackingMode =
@@ -98,6 +100,7 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
 //                Toast.LENGTH_SHORT
 //            ).show()
 //        }
+
         val marker_TUK = Marker()
         marker_TUK.position = LatLng(37.34003500120548, 126.73351773396644) // 한국 공학 대학교의 마커
         marker_TUK.captionText = "한국공학대학교"
@@ -132,9 +135,30 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
                 val result = String.format("%.2f", calculate(location, marker_eco_park) / 1000)
                 binding.tv.text = "현재 위치와 " + resent_result + "와의 거리\n = " + "${result} km"
             }
+            if (calculate(location,marker_TUK)/1000 < 1.0){ // 정해진 마커에 1km 이내로 접근 시, QR 코드 인식 가능 설정 함수
+                check_TUK = true
+                check_lighthouse = false
+                check_WP = false
+                check_eco_park = false
+            } else if (calculate(location,marker_WP)/1000 < 1.0){
+                check_WP = true
+                check_TUK = false
+                check_lighthouse = false
+                check_eco_park = false
+            } else if (calculate(location,marker_lighthouse)/1000 < 1.0){
+                check_lighthouse = true
+                check_TUK = false
+                check_WP = false
+                check_eco_park = false
+            } else if (calculate(location,marker_eco_park)/1000 < 1.0){
+                check_eco_park = true
+                check_TUK = false
+                check_lighthouse = false
+                check_WP = false
+            }
         }
 
-        binding.imageBtn.setOnClickListener { // 버튼 클릭 시, 다른 랜드 마크 와의 거리 표시
+        binding.btnDist.setOnClickListener { // 버튼 클릭 시, 다른 랜드 마크 와의 거리 표시
             if (resent_result == "한국공학대학교") {
                 resent_result = "오이도 빨강 등대"
             } else if (resent_result == "오이도 빨강 등대") {
@@ -145,6 +169,27 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
                 resent_result = "한국공학대학교"
             }
         }
+        binding.btnCheck.setOnClickListener{ // 버튼 클릭 시, 마커와 정해진 거리 이내에 위치해 있는지 확인 후, 토스트 메시지 출력 함수
+            if(check_TUK == true){
+                Toast.makeText(this,"       한국공학대학교의 \n QR 코드 인증이 가능합니다",Toast.LENGTH_LONG).show()
+            } else if (check_lighthouse == true){
+                Toast.makeText(this,"       오이도 빨강 등대의 \n QR 코드 인증이 가능합니다",Toast.LENGTH_LONG).show()
+            } else if (check_WP == true){
+                Toast.makeText(this,"       웨이브 파크의 \n QR 코드 인증이 가능합니다",Toast.LENGTH_LONG).show()
+            } else if (check_eco_park == true){
+                Toast.makeText(this,"       갯골 생태 공원의 \n QR 코드 인증이 가능합니다",Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(this,"QR 코드 인증 가능한 곳이 없습니다",Toast.LENGTH_LONG).show()
+            }
+        }
+        marker_WP.captionMinZoom = 11.0 // 줌 레벨에 따라 마커의 캡션 메시지 숨기기
+        marker_WP.captionMaxZoom = 21.0
+        marker_TUK.captionMinZoom = 11.0
+        marker_TUK.captionMaxZoom = 21.0
+        marker_lighthouse.captionMinZoom = 11.0
+        marker_lighthouse.captionMaxZoom = 21.0
+        marker_eco_park.captionMinZoom = 11.0
+        marker_eco_park.captionMaxZoom = 21.0
     }
 
     private fun calculate(location: Location,  // 위도, 경도를 이용해 두 점 사이의 거리를 계산하는 함수
@@ -192,6 +237,11 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (!locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            return
+        }
         if (::naverMap.isInitialized) {
             if (locationSource.isActivated) {
                 naverMap.locationTrackingMode = LocationTrackingMode.Follow
@@ -199,6 +249,5 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
                 naverMap.locationTrackingMode = LocationTrackingMode.None
             }
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 }
