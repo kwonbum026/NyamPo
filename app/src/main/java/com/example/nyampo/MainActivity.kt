@@ -201,9 +201,7 @@ class MainActivity : AppCompatActivity() {
 
         //만보기 버튼
         walkButton.setOnClickListener {
-            if (progressBar.progress > 0) progressBar.progress -= 1
-            val intent = Intent(this, GPSActivity::class.java)
-            startActivity(intent)
+            com.example.nyampo.ui.WalkDialog.show(this)
         }
 
         //캘린더 버튼
