@@ -2,6 +2,7 @@ package com.example.nyampo
 
 import android.Manifest
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -43,10 +44,15 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     private var progressCount = 0
     private var bonusFeedGranted = false
 
+
     private val stepLength = 0.75
     private val stepsPerFeed = 3000
     private val stepsPerProgress = 10
     private val maxSteps = 10000
+
+    private lateinit var userId: String
+    private lateinit var today: String
+    private lateinit var prefs: SharedPreferences
 
     private val LOCATION_PERMISSION_CODE = 1001
     private val REQUIRED_PERMISSIONS: Array<String>
@@ -102,6 +108,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
 
     private fun goToMain() {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("userId", userId)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
         finish()

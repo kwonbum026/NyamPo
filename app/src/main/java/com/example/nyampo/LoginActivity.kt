@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.nyampo.admin.AdminActivity
 import com.google.firebase.database.FirebaseDatabase
 
 class LoginActivity : AppCompatActivity() {
@@ -39,6 +40,12 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener {
             val userId = editTextId.text.toString().trim()
             val password = editTextPassword.text.toString().trim()
+
+            if (userId == "admin" && password == "1234") {
+                startActivity(Intent(this, AdminActivity::class.java))
+                finish()
+                return@setOnClickListener
+            }
 
             if (userId.isEmpty()) {
                 Toast.makeText(this, "아이디를 입력하세요", Toast.LENGTH_SHORT).show()
