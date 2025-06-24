@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        checkAttendanceStatusAndUpdateUI()
 
         val savedBackgroundIndex = prefs.getInt(KEY_BACKGROUND, 0)
         changeBackground(savedBackgroundIndex, backgrounds)
@@ -141,7 +142,7 @@ class MainActivity : AppCompatActivity() {
         val mailButton = findViewById<ImageButton>(R.id.imageButton_mail)
         val closetButton = findViewById<ImageButton>(R.id.imageButton_closet)
 
-        val attendancePrefs = getSharedPreferences("AttendancePrefs", Context.MODE_PRIVATE)
+        val attendancePrefs = getSharedPreferences("AttendancePrefs_$userId", Context.MODE_PRIVATE)
         val todayKey =
             SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis())
         checkIcon.visibility =
@@ -206,7 +207,17 @@ class MainActivity : AppCompatActivity() {
 
         //캘린더 버튼
         calendarButton.setOnClickListener {
-            AttendanceDialog.show(this, userId,checkIcon) {
+            AttendanceDialog.show(this, userId, checkIcon) {
+                // 출석 완료 콜백
+                // ✅ 출석 SharedPreferences 저장
+                val attendancePrefs = getSharedPreferences("AttendancePrefs", Context.MODE_PRIVATE)
+                val todayKey = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis())
+                attendancePrefs.edit().putBoolean(todayKey, true).apply()
+
+                // ✅ checkIcon 갱신
+                checkAttendanceStatusAndUpdateUI()
+
+                // ✅ 먹이 보상
                 FeedDialog.showGetFeedPopup(this) { gained ->
                     leafCount += gained
                     leafTextView.text = leafCount.toString()
@@ -215,7 +226,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-         fun showClosetDialog() {
+        fun showClosetDialog() {
             val userRef = FirebaseDatabase.getInstance("https://nyampo-7d71d-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("users").child(userId)
 
@@ -299,6 +310,14 @@ class MainActivity : AppCompatActivity() {
         }
         prefs.edit().putInt(KEY_BACKGROUND, index).apply()
     }
+
+    private fun checkAttendanceStatusAndUpdateUI() {
+        val attendancePrefs = getSharedPreferences("AttendancePrefs", Context.MODE_PRIVATE)
+        val todayKey = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis())
+        val checkedToday = attendancePrefs.getBoolean(todayKey, false)
+        checkIcon.visibility = if (checkedToday) View.VISIBLE else View.GONE
+    }
+
 
     //캐릭터 하트 띄우는 함수
     private fun showFloatingHearts() {
