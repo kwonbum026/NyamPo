@@ -12,7 +12,7 @@ import com.example.nyampo.RunActivity
 import com.example.nyampo.R
 
 object WalkDialog {
-    fun show(context: Context) {
+    fun show(context: Context, userId: String) {
         val dialog = Dialog(context)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_chose_run, null)
         dialog.setContentView(view)
@@ -31,6 +31,7 @@ object WalkDialog {
 
             val intent = Intent(context, RunActivity::class.java)
             intent.putExtra("mascotIndex", mascotIndex)
+            intent.putExtra("userId", userId)
             context.startActivity(intent)
             dialog.dismiss()
         }

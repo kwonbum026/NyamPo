@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
         fetchNickname()
         showWelcomePopupIfNeeded()
         observeUserData() //실시간 DB 연동
+        observeTodaySteps()
 
         val mascotFromIntent = intent.getStringExtra("selected_mascot")
         if (mascotFromIntent != null) {
@@ -201,7 +202,10 @@ class MainActivity : AppCompatActivity() {
 
         //만보기 버튼
         walkButton.setOnClickListener {
-            com.example.nyampo.ui.WalkDialog.show(this)
+            val intent = Intent(this, RunActivity::class.java)
+            intent.putExtra("userId", userId)  // ✅ 이게 빠지면 문제가 발생함
+            intent.putExtra("mascotIndex", prefs.getInt(KEY_MASCOT, 0))  // 선택한 캐릭터 전달도 가능
+            startActivity(intent)
         }
 
         //캘린더 버튼
@@ -370,6 +374,22 @@ class MainActivity : AppCompatActivity() {
         }.addOnFailureListener {
             Log.e("Firebase", "먹이/머니 불러오기 실패: ${it.message}")
         }
+    }
+
+    private fun observeTodaySteps() {
+        val todayKey = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis())
+        val stepsRef = FirebaseDatabase.getInstance("https://nyampo-7d71d-default-rtdb.asia-southeast1.firebasedatabase.app")
+            .getReference("users").child(userId).child("steps").child(todayKey)
+
+        stepsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val steps = snapshot.getValue(Int::class.java) ?: return
+                Log.d("Firebase", "오늘 걸음 수: $steps")
+                // 원하면 UI에 표시하거나, 보상 조건 체크
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     //firebase에 실시간 연동을 위한 함수

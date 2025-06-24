@@ -2,7 +2,6 @@ package com.example.nyampo
 
 import android.Manifest
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -18,6 +17,10 @@ import androidx.core.content.ContextCompat
 import com.example.nyampo.ui.FeedDialog
 import com.google.android.gms.location.*
 import com.example.nyampo.MainActivity
+import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class RunActivity : AppCompatActivity(), SensorEventListener {
 
@@ -30,6 +33,8 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var noticeFeed2: TextView
     private lateinit var stepAddButton: Button
     private lateinit var backButton: ImageButton
+    private lateinit var userId: String
+
 
     private lateinit var sensorManager: SensorManager
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -44,15 +49,10 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     private var progressCount = 0
     private var bonusFeedGranted = false
 
-
     private val stepLength = 0.75
     private val stepsPerFeed = 3000
     private val stepsPerProgress = 10
     private val maxSteps = 10000
-
-    private lateinit var userId: String
-    private lateinit var today: String
-    private lateinit var prefs: SharedPreferences
 
     private val LOCATION_PERMISSION_CODE = 1001
     private val REQUIRED_PERMISSIONS: Array<String>
@@ -80,6 +80,11 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         backButton.setOnClickListener {
             goToMain()
         }
+        userId = intent.getStringExtra("userId") ?: run {
+            Toast.makeText(this, "사용자 정보가 없습니다.", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
 
 
         val mascotIndex = intent.getIntExtra("mascotIndex", 0)
@@ -104,6 +109,14 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         } else {
             startTracking()
         }
+    }
+    private val today: String
+        get() = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Date())
+
+    private fun saveStepToFirebase() {
+        val db = FirebaseDatabase.getInstance("https://nyampo-7d71d-default-rtdb.asia-southeast1.firebasedatabase.app")
+        val ref = db.getReference("users").child(userId).child("steps").child(today)
+        ref.setValue(stepCount)
     }
 
     private fun goToMain() {
@@ -163,32 +176,41 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR && currentSpeed > 0.5) {
+        if (event?.sensor?.type == Sensor.TYPE_STEP_DETECTOR ) {
             simulateStep()
         }
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
+    private var stepsSinceLastSave = 0
     private fun simulateStep() {
         if (stepCount >= maxSteps) {
             if (stepCount == maxSteps) {
-                updateUi() // 💡 코드 중복 제거
+                // 정확히 10000보 도달 시에도 한번은 업데이트해줌
+                progressBar.progress = 100
+                distance = stepCount * stepLength
+                updateFeedNotice()
+
+                walkingText.text = "걸음 수: $stepCount\n총 거리: ${String.format("%.2f", distance)} m"
+                if (stepsSinceLastSave >= 10) {
+                    saveStepToFirebase()
+                    stepsSinceLastSave = 0
+                }
+
             }
             return
         }
 
         stepCount++
-        updateUi()
-    }
-
-    private fun updateUi() {
         distance = stepCount * stepLength
         progressBar.progress = (stepCount * 100) / maxSteps
+
         updateFeedNotice()
         walkingText.text = "걸음 수: $stepCount\n총 거리: ${String.format("%.2f", distance)} m"
-    }
+        saveStepToFirebase()
 
+    }
 
 
 
@@ -198,9 +220,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
 
     private fun updateFeedNotice() {
         val available = availableFeedCount()
-        val bonusAvailable = stepCount >= maxSteps && !bonusFeedGranted
-
-        if (available > 0 || bonusAvailable) {
+        if (available > 0) {
             noticeFeed1.visibility = View.VISIBLE
             noticeFeed2.visibility = View.VISIBLE
         } else {
@@ -208,7 +228,6 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
             noticeFeed2.visibility = View.INVISIBLE
         }
     }
-
 
     private fun giveFeed() {
         val regularAvailable = availableFeedCount()
@@ -220,15 +239,13 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
             FeedDialog.showGetFeedPopup(this)
             updateFeedNotice()
         } else if (bonusAvailable) {
-            bonusFeedGranted = true      // ✅ 먼저 보너스 지급 처리
+            bonusFeedGranted = true
             leafCount++
             FeedDialog.showGetFeedPopup(this)
-            updateFeedNotice()          // ✅ 보너스 조건 사라졌음을 반영!
         } else {
             Toast.makeText(this, "아직 먹이를 받을 수 없어요!", Toast.LENGTH_SHORT).show()
         }
     }
-
 
 
     override fun onRequestPermissionsResult(
@@ -248,6 +265,8 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        sensorManager.unregisterListener(this)
+        if (::sensorManager.isInitialized) {
+            sensorManager.unregisterListener(this)
+        }
     }
 }
