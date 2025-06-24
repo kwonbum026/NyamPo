@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.nyampo.ui.AttendanceDialog
 import com.example.nyampo.ui.ClosetDialog
 import com.example.nyampo.ui.FeedDialog
+import com.example.nyampo.ui.MoneyDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -270,7 +271,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         moneyButton.setOnClickListener {
-            // TODO: 시루 버튼 처리
+            MoneyDialog.show(this, moneyCount)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

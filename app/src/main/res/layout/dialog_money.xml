@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_box"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/imageButton_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/icon_arrow_back" />
+
+    <!-- 머니 아이콘 + 잔액 표시 (수평 정렬) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/cafe24surround"
+            app:srcCompat="@drawable/money_icon" />
+
+        <TextView
+            android:id="@+id/Money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="잔액"
+            android:textSize="18sp"
+            android:fontFamily="@font/cafe24surround"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+
+    <!-- 계좌번호 입력 -->
+
+    <EditText
+        android:id="@+id/editText_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="계좌번호"
+        android:inputType="text"
+        android:textSize="18sp"
+        android:fontFamily="@font/cafe24surround"
+        android:layout_marginTop="8dp" />
+
+    <!-- 금액 입력 -->
+    <EditText
+        android:id="@+id/editText_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="금액"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:fontFamily="@font/cafe24surround"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/transferMoney"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="이체하기"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/mobileSiru"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/cafe24surround"
+        android:text="모바일 시루 보기"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:gravity="center" />
+
+</LinearLayout>
