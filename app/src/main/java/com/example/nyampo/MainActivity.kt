@@ -136,6 +136,7 @@ class MainActivity : AppCompatActivity() {
         val feedButton = findViewById<Button>(R.id.button_feed)
         val moneyButton = findViewById<Button>(R.id.button_money)
         val qrButton = findViewById<ImageButton>(R.id.imageButton_qr)
+        val adButton = findViewById<ImageButton>(R.id.imageButton_ad)
         val mailButton = findViewById<ImageButton>(R.id.imageButton_mail)
         val closetButton = findViewById<ImageButton>(R.id.imageButton_closet)
 
@@ -144,12 +145,6 @@ class MainActivity : AppCompatActivity() {
             SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(System.currentTimeMillis())
         checkIcon.visibility =
             if (attendancePrefs.getBoolean(todayKey, false)) View.VISIBLE else View.GONE
-
-        qrButton.setOnClickListener {
-            val intent = Intent(this, QrScannerActivity::class.java)
-            intent.putExtra("userId", userId)
-            startActivity(intent)
-        }
 
         //firebase에 획득한 background 저장
         val bgIndexFromQR = intent.getIntExtra("background_index", -1)
@@ -182,6 +177,16 @@ class MainActivity : AppCompatActivity() {
 
         haeroButton.setOnClickListener { showFloatingHearts() }
         tinoButton.setOnClickListener { showFloatingHearts() }
+
+        qrButton.setOnClickListener {
+            val intent = Intent(this, QrScannerActivity::class.java)
+            intent.putExtra("userId", userId)
+            startActivity(intent)
+        }
+
+        adButton.setOnClickListener {
+            com.example.nyampo.ui.AdDialog.show(this)
+        }
 
         //공지사항 버튼
         mailButton.setOnClickListener {
