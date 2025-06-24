@@ -26,16 +26,6 @@
         android:gravity="center"
         android:layout_gravity="center_horizontal"
         />
-<<<<<<< HEAD
-
-
-    <VideoView
-        android:id="@+id/videoView_ad"
-        android:layout_width="wrap_content"
-        android:layout_height="240dp"
-        android:layout_marginTop="15dp" />
-=======
->>>>>>> adbb500e64b75b1924ad54de27eddc3cd212b734
 
     <Button
         android:id="@+id/button_get_feed"
