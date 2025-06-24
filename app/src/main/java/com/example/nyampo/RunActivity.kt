@@ -1,6 +1,7 @@
 package com.example.nyampo
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -15,6 +16,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.nyampo.ui.FeedDialog
 import com.google.android.gms.location.*
+import com.example.nyampo.MainActivity
 
 class RunActivity : AppCompatActivity(), SensorEventListener {
 
@@ -26,6 +28,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var noticeFeed1: TextView
     private lateinit var noticeFeed2: TextView
     private lateinit var stepAddButton: Button
+    private lateinit var backButton: ImageButton
 
     private lateinit var sensorManager: SensorManager
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -67,6 +70,11 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         noticeFeed1 = findViewById(R.id.notice_feed1)
         noticeFeed2 = findViewById(R.id.notice_feed2)
         stepAddButton = findViewById(R.id.button)
+        backButton = findViewById(R.id.imageButton_back)
+        backButton.setOnClickListener {
+            goToMain()
+        }
+
 
         val mascotIndex = intent.getIntExtra("mascotIndex", 0)
         when (mascotIndex) {
@@ -88,6 +96,13 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         } else {
             startTracking()
         }
+    }
+
+    private fun goToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        finish()
     }
 
     private fun hasPermissions(): Boolean {
