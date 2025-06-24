@@ -245,16 +245,16 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.022"
         app:srcCompat="@drawable/setting_icon" />
 
     <ImageButton
         android:id="@+id/imageButton_mail"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="71dp"
+        android:layout_height="56dp"
         android:background="@android:color/transparent"
         android:contentDescription="메일 아이콘"
         android:scaleType="fitXY"
@@ -263,7 +263,7 @@
         app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_setting"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.642"
         app:srcCompat="@drawable/mail_icon" />
 
     <ImageButton
@@ -278,7 +278,7 @@
         app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_setting"
-        app:layout_constraintVertical_bias="0.118"
+        app:layout_constraintVertical_bias="0.135"
         app:srcCompat="@drawable/calendar_icon" />
 
     <ImageView
@@ -305,7 +305,7 @@
         app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_calendar"
-        app:layout_constraintVertical_bias="0.004"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/walk_icon" />
 
     <ImageButton
@@ -321,8 +321,10 @@
         app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_calendar"
-        app:layout_constraintVertical_bias="0.162"
+        app:layout_constraintVertical_bias="0.177"
         app:srcCompat="@drawable/closet_icon" />
+
+    <!-- money 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
 
     <ImageButton
         android:id="@+id/imageButton_qr"
@@ -337,10 +339,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202"
+        app:layout_constraintVertical_bias="0.225"
         app:srcCompat="@drawable/icon_qr_scan" />
-
-    <!-- money 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
 
     <ImageButton
         android:id="@+id/imageButton_ad"
@@ -354,7 +354,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_qr"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/ad_icon" />
 
     <FrameLayout
