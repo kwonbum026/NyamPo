@@ -32,7 +32,7 @@ object AdDialog {
 
         buttonGetFeed.isEnabled = false // 초기 비활성화
 
-        val videoUri = Uri.parse("android.resource://${context.packageName}/${R.raw.ad}") // res/raw/sample_video.mp4
+        val videoUri = Uri.parse("android.resource://${context.packageName}/${R.raw.ad2}") // res/raw/sample_video.mp4
         videoView.setVideoURI(videoUri)
 
 
