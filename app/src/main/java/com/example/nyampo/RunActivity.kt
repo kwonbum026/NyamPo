@@ -86,7 +86,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         haero.setOnClickListener { giveFeed() }
         toro.setOnClickListener { giveFeed() }
         tino.setOnClickListener { giveFeed() }
-        stepAddButton.setOnClickListener { simulateStep() }
+        stepAddButton.setOnClickListener { stepCount += 100 }
 
         noticeFeed1.visibility = View.INVISIBLE
         noticeFeed2.visibility = View.INVISIBLE
@@ -164,7 +164,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     private fun simulateStep() {
         if (stepCount >= maxSteps) return
 
-        stepCount += 100
+        stepCount ++
         distance = stepCount * stepLength
 
         // ✅ 정확한 비율 기반 프로그레스 바
