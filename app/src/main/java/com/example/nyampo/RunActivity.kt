@@ -86,7 +86,9 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
         haero.setOnClickListener { giveFeed() }
         toro.setOnClickListener { giveFeed() }
         tino.setOnClickListener { giveFeed() }
-        stepAddButton.setOnClickListener { stepCount += 100 }
+        stepAddButton.setOnClickListener {
+            repeat(100) { simulateStep() }
+        }
 
         noticeFeed1.visibility = View.INVISIBLE
         noticeFeed2.visibility = View.INVISIBLE
@@ -162,18 +164,25 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
 
     private fun simulateStep() {
-        if (stepCount >= maxSteps) return
+        if (stepCount >= maxSteps) {
+            if (stepCount == maxSteps) {
+                updateUi() // 💡 코드 중복 제거
+            }
+            return
+        }
 
-        stepCount ++
+        stepCount++
+        updateUi()
+    }
+
+    private fun updateUi() {
         distance = stepCount * stepLength
-
-        // ✅ 정확한 비율 기반 프로그레스 바
         progressBar.progress = (stepCount * 100) / maxSteps
-
         updateFeedNotice()
-
         walkingText.text = "걸음 수: $stepCount\n총 거리: ${String.format("%.2f", distance)} m"
     }
+
+
 
 
     private fun availableFeedCount(): Int {
@@ -182,7 +191,9 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
 
     private fun updateFeedNotice() {
         val available = availableFeedCount()
-        if (available > 0) {
+        val bonusAvailable = stepCount >= maxSteps && !bonusFeedGranted
+
+        if (available > 0 || bonusAvailable) {
             noticeFeed1.visibility = View.VISIBLE
             noticeFeed2.visibility = View.VISIBLE
         } else {
@@ -190,6 +201,7 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
             noticeFeed2.visibility = View.INVISIBLE
         }
     }
+
 
     private fun giveFeed() {
         val regularAvailable = availableFeedCount()
@@ -201,13 +213,15 @@ class RunActivity : AppCompatActivity(), SensorEventListener {
             FeedDialog.showGetFeedPopup(this)
             updateFeedNotice()
         } else if (bonusAvailable) {
-            bonusFeedGranted = true
+            bonusFeedGranted = true      // ✅ 먼저 보너스 지급 처리
             leafCount++
             FeedDialog.showGetFeedPopup(this)
+            updateFeedNotice()          // ✅ 보너스 조건 사라졌음을 반영!
         } else {
             Toast.makeText(this, "아직 먹이를 받을 수 없어요!", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 
     override fun onRequestPermissionsResult(
