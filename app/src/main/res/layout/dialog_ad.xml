@@ -14,12 +14,25 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/icon_arrow_back" />
 
-    <ImageView
-        android:id="@+id/imageView_ad"
-        android:layout_width="250dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/question_mark_icon" />
+    <TextView
+        android:id="@+id/text_ad_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="광고 종료까지 00초"
+        android:fontFamily="@font/cafe24surround"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+    <VideoView
+        android:id="@+id/videoView_ad"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_marginTop="15dp" />
 
     <Button
         android:id="@+id/button_get_feed"
