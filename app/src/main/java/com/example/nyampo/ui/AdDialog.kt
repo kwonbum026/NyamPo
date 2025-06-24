@@ -27,42 +27,10 @@ object AdDialog {
         val buttonBack = view.findViewById<ImageButton>(R.id.imageButton_back)
         val buttonGetFeed = view.findViewById<Button>(R.id.button_get_feed)
         buttonGetFeed.isEnabled = false  // 초기 비활성화
-<<<<<<< HEAD
-        val videoView = view.findViewById<VideoView>(R.id.videoView_ad)
         val timerText = view.findViewById<TextView>(R.id.text_ad_timer)
 
         buttonGetFeed.isEnabled = false // 초기 비활성화
 
-
-        videoView.setOnPreparedListener { mediaPlayer ->
-            mediaPlayer.isLooping = false
-            videoView.start()
-
-            val durationMs = mediaPlayer.duration
-
-            // ⏱ 남은 시간 표시 타이머 시작
-            object : CountDownTimer(durationMs.toLong(), 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    val seconds = millisUntilFinished / 1000
-                    timerText.text = "광고 종료까지 ${seconds}초"
-                }
-
-                override fun onFinish() {
-                    timerText.text = "광고가 끝났습니다"
-                    buttonGetFeed.isEnabled = true
-                }
-            }.start()
-        }
-        videoView.setOnCompletionListener {
-            buttonGetFeed.isEnabled = true
-            timerText.text = "광고가 끝났습니다"
-        }
-=======
-        val timerText = view.findViewById<TextView>(R.id.text_ad_timer)
-
-        buttonGetFeed.isEnabled = false // 초기 비활성화
-
->>>>>>> adbb500e64b75b1924ad54de27eddc3cd212b734
 
         buttonGetFeed.setOnClickListener {
             // 중복 클릭 방지
