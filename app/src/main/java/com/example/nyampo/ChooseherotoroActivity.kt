@@ -54,15 +54,15 @@ class ChooseherotoroActivity : AppCompatActivity() {
         // 해로 선택
         val heroButton = findViewById<Button>(R.id.buttonSelectHero)
         heroButton.setOnClickListener {
-            saveSelectedCharacterToFirebase("hero")
-            unlockOtherCharacterIfLevel10()
+            saveSelectedCharacter("hero")
+//            unlockOtherCharacterIfLevel10()
         }
 
         // 토로 선택
         val toroButton = findViewById<Button>(R.id.buttonSelectToro)
         toroButton.setOnClickListener {
-            saveSelectedCharacterToFirebase("toro")
-            unlockOtherCharacterIfLevel10()
+            saveSelectedCharacter("hero")
+//            unlockOtherCharacterIfLevel10()
         }
     }
 

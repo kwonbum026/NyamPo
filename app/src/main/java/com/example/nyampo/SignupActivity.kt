@@ -53,7 +53,6 @@ class SignupActivity : AppCompatActivity() {
                 val userRef = firebaseDB.getReference("users").child(enteredId)
                 userRef.get()
                     .addOnSuccessListener { snapshot ->
-                        Log.d("Firebase", "ID 조회 성공: exists=${snapshot.exists()}")
                         if (snapshot.exists()) {
                             showPopup(R.layout.popup_checkid_overlap) { editTextId.setText("") }
                             isIdChecked = false
@@ -97,7 +96,7 @@ class SignupActivity : AppCompatActivity() {
                         }
                     }
                     .addOnFailureListener { e ->
-                        Log.e("Firebase", "전화번호 중복 확인 실패: ${e.message}", e)
+                        Log.e("Firebase", "전화번호 확인 실패: ${e.message}", e)
                         Toast.makeText(this, "전화번호 확인 오류", Toast.LENGTH_SHORT).show()
                     }
             }
@@ -140,10 +139,8 @@ class SignupActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Firebase에 사용자 정보 저장
-            val userRef = firebaseDB.getReference("users").child(id)
             val referralId = editTextReferral.text.toString().trim()
-            val feed = if (referralId.isNotBlank()) 20 else 10 // 추천인 있으면 20, 없으면 10
+            val userRef = firebaseDB.getReference("users").child(id)
             val userData = mapOf(
                 "password" to pw,
                 "phone" to phone,
@@ -161,7 +158,9 @@ class SignupActivity : AppCompatActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "회원가입 성공!", Toast.LENGTH_SHORT).show()
                     Handler(Looper.getMainLooper()).postDelayed({
-                        startActivity(Intent(this, LoginActivity::class.java))
+                        val intent = Intent(this, LoginActivity::class.java)
+                        intent.putExtra("userId", id)
+                        startActivity(intent)
                         finish()
                     }, 1000)
                 }

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.camera.core.*
@@ -16,16 +17,13 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.google.android.gms.location.LocationServices
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.barcode.BarcodeScannerOptions
-import com.google.mlkit.vision.barcode.common.Barcode
-import com.google.mlkit.vision.common.InputImage
 import com.google.firebase.database.FirebaseDatabase
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.pow
-import kotlin.math.sin
-import kotlin.math.sqrt
+import com.google.mlkit.vision.barcode.BarcodeScanner
+import com.google.mlkit.vision.barcode.BarcodeScanning
+import com.google.mlkit.vision.barcode.common.Barcode as MlBarcode
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions
+import com.google.mlkit.vision.common.InputImage
+import kotlin.math.*
 
 class QrScannerActivity : AppCompatActivity() {
 
@@ -88,7 +86,7 @@ class QrScannerActivity : AppCompatActivity() {
             }
 
             val options = BarcodeScannerOptions.Builder()
-                .setBarcodeFormats(Barcode.FORMAT_QR_CODE)
+                .setBarcodeFormats(MlBarcode.FORMAT_QR_CODE)
                 .build()
 
             val scanner = BarcodeScanning.getClient(options)
@@ -110,9 +108,9 @@ class QrScannerActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
-    @androidx.annotation.OptIn(ExperimentalGetImage::class)
+    @OptIn(ExperimentalGetImage::class)
     private fun processImageProxy(
-        scanner: com.google.mlkit.vision.barcode.BarcodeScanner,
+        scanner: BarcodeScanner,
         imageProxy: ImageProxy
     ) {
         val mediaImage = imageProxy.image
@@ -160,34 +158,6 @@ class QrScannerActivity : AppCompatActivity() {
             else -> -1
         }
 
-//        if (backgroundKey != null && backgroundIndex != -1) {
-//            val userRef = FirebaseDatabase.getInstance("https://nyampo-7d71d-default-rtdb.asia-southeast1.firebasedatabase.app")
-//                .getReference("users").child(userId)
-//
-//            userRef.child("backgrounds").get().addOnSuccessListener { snapshot ->
-//                val current = snapshot.children.mapNotNull { it.getValue(String::class.java) }.toMutableSet()
-//                if (!current.contains(backgroundKey)) {
-//                    current.add(backgroundKey)
-//                    userRef.child("backgrounds").setValue(current.toList()).addOnCompleteListener {
-//                        Toast.makeText(this, "배경화면을 획득했습니다!", Toast.LENGTH_SHORT).show()
-//
-//                        val intent = Intent(this, MainActivity::class.java).apply {
-//                            putExtra("userId", userId)
-//                            putExtra("background_index", backgroundIndex)
-//                            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-//                        }
-//                        startActivity(intent)
-//                        finish()
-//                    }
-//                } else {
-//                    Toast.makeText(this, "이미 획득한 배경입니다.", Toast.LENGTH_SHORT).show()
-//                    finish()
-//                }
-//            }
-//        } else {
-//            Toast.makeText(this, "알 수 없는 QR 코드입니다.", Toast.LENGTH_SHORT).show()
-//            finish()
-//        }
         if (backgroundKey != null && backgroundIndex != -1) {
             getCurrentLocation { currentLat, currentLon ->
                 val targetLatLon = when (code.lowercase()) {
@@ -241,6 +211,7 @@ class QrScannerActivity : AppCompatActivity() {
             finish()
         }
     }
+
     @SuppressLint("MissingPermission")
     private fun getCurrentLocation(callback: (Double, Double) -> Unit) {
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)

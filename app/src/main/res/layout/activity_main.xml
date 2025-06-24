@@ -71,14 +71,14 @@
 
     <ImageView
         android:id="@+id/userImage"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_icon" />
+        app:srcCompat="@drawable/userimage" />
 
     <TextView
         android:id="@+id/userText"
@@ -100,12 +100,12 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="56dp"
         android:layout_marginEnd="5dp"
         android:contentDescription="Heart Icon"
         android:src="@drawable/heart_icon"
         app:layout_constraintEnd_toStartOf="@+id/ProgressBar"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#F44336" />
@@ -122,16 +122,18 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/heartIcon"
         app:layout_constraintEnd_toEndOf="@+id/heartIcon"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="@+id/heartIcon"
-        app:layout_constraintTop_toTopOf="@+id/heartIcon" />
+        app:layout_constraintTop_toTopOf="@+id/heartIcon"
+        app:layout_constraintVertical_bias="0.6" />
 
     <ProgressBar
         android:id="@+id/ProgressBar"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="150dp"
         android:layout_height="25dp"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="64dp"
         android:progressDrawable="@drawable/progressbar_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -421,15 +423,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/leaf_icon" />
-
-    <TextView
-        android:id="@+id/noticeTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="공지사항 없음"
-        android:textColor="#FF0000"
-        android:textSize="14sp"
-        android:padding="8dp"
-        android:background="#FFF1F1F1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
