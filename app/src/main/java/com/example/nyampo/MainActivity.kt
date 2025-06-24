@@ -337,7 +337,7 @@ class MainActivity : AppCompatActivity() {
 
         userRef.child("nickname").get().addOnSuccessListener { snapshot ->
             val nickname = snapshot.getValue(String::class.java)
-            userText.text = nickname?.let { "$it!" } ?: "닉네임 없음"
+            userText.text = nickname?.let { "$it" } ?: "닉네임 없음"
         }.addOnFailureListener {
             userText.text = "닉네임 불러오기 실패"
         }
