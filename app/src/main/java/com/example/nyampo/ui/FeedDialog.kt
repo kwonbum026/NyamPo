@@ -45,7 +45,7 @@ object FeedDialog {
         context: Context,
         message: String = "먹이 획득!",
         iconResId: Int = R.drawable.leaf_icon,
-        onReward: (Int) -> Unit
+        onReward: ((Int) -> Unit)? = null
     ) {
         val dialog = Dialog(context)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_get_feed, null)
@@ -64,10 +64,11 @@ object FeedDialog {
         }
 
         dialog.setOnDismissListener {
-            onReward(1)
+            onReward?.invoke(1)
         }
 
         dialog.setCanceledOnTouchOutside(true)
         dialog.show()
     }
+
 }
