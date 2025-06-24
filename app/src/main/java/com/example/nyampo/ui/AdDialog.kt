@@ -27,13 +27,11 @@ object AdDialog {
         val buttonBack = view.findViewById<ImageButton>(R.id.imageButton_back)
         val buttonGetFeed = view.findViewById<Button>(R.id.button_get_feed)
         buttonGetFeed.isEnabled = false  // 초기 비활성화
+<<<<<<< HEAD
         val videoView = view.findViewById<VideoView>(R.id.videoView_ad)
         val timerText = view.findViewById<TextView>(R.id.text_ad_timer)
 
         buttonGetFeed.isEnabled = false // 초기 비활성화
-
-        val videoUri = Uri.parse("android.resource://${context.packageName}/${R.raw.ad2}") // res/raw/sample_video.mp4
-        videoView.setVideoURI(videoUri)
 
 
         videoView.setOnPreparedListener { mediaPlayer ->
@@ -59,6 +57,12 @@ object AdDialog {
             buttonGetFeed.isEnabled = true
             timerText.text = "광고가 끝났습니다"
         }
+=======
+        val timerText = view.findViewById<TextView>(R.id.text_ad_timer)
+
+        buttonGetFeed.isEnabled = false // 초기 비활성화
+
+>>>>>>> adbb500e64b75b1924ad54de27eddc3cd212b734
 
         buttonGetFeed.setOnClickListener {
             // 중복 클릭 방지

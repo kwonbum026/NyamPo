@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-         fun showClosetDialog() {
+        fun showClosetDialog() {
             val userRef = FirebaseDatabase.getInstance("https://nyampo-7d71d-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .getReference("users").child(userId)
 

@@ -168,6 +168,9 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
             } else if (resent_result == "갯골 생태 공원") {
                 resent_result = "한국공학대학교"
             }
+            if (!hasPermission()){
+                Toast.makeText(this, " 현재 위치를 표시하기 위해 \n 위치 접근 권한이 필요합니다",Toast.LENGTH_SHORT).show()
+            }
         }
         binding.btnCheck.setOnClickListener{ // 버튼 클릭 시, 마커와 정해진 거리 이내에 위치해 있는지 확인 후, 토스트 메시지 출력 함수
             if(check_TUK == true){
@@ -180,6 +183,9 @@ class GPSActivity : AppCompatActivity(), OnMapReadyCallback {
                 Toast.makeText(this,"       갯골 생태 공원의 \n QR 코드 인증이 가능합니다",Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(this,"QR 코드 인증 가능한 곳이 없습니다",Toast.LENGTH_LONG).show()
+            }
+            if (!hasPermission()){
+                Toast.makeText(this, " 현재 위치를 표시하기 위해 \n 위치 접근 권한이 필요합니다",Toast.LENGTH_SHORT).show()
             }
         }
         marker_WP.captionMinZoom = 11.0 // 줌 레벨에 따라 마커의 캡션 메시지 숨기기

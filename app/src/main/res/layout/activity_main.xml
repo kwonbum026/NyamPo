@@ -308,6 +308,8 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/walk_icon" />
 
+    <!-- money 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
+
     <ImageButton
         android:id="@+id/imageButton_closet"
         android:layout_width="70dp"
@@ -321,10 +323,8 @@
         app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton_calendar"
-        app:layout_constraintVertical_bias="0.177"
+        app:layout_constraintVertical_bias="0.19"
         app:srcCompat="@drawable/closet_icon" />
-
-    <!-- money 아이콘 앞으로 나오게 하기 위해서 FrameLayout 사용-->
 
     <ImageButton
         android:id="@+id/imageButton_qr"
